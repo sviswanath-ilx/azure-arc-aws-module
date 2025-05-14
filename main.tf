@@ -1,5 +1,5 @@
 provider "aws" {
-  profile = "sandbox"          # Replace with your actual AWS CLI profile name
+  profile = "sandbox"          # Replace with your actual AWS CLI profile_name
   region  = "us-east-2"        # Replace with your target AWS region
 }
 
