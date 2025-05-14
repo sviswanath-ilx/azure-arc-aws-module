@@ -1,18 +1,8 @@
 provider "aws" {
-  profile = "sandbox"          # Replace with your actual AWS CLI profile_name
-  region  = "us-east-2"        # Replace with your target AWS region
+  profile = var.profile_name        # Replace with your actual AWS CLI profile_name
+  region  = var.aws_region        # Replace with your target AWS region
 }
 
-locals {
-  azure_connector_id = "/subscriptions/f7f17b68-862f-46b7-b8a9-aea4b7bc27d6/resourcegroups/viswa-rg/providers/microsoft.hybridconnectivity/publiccloudconnectors/azure-to-aws"
-}
-
-data "aws_caller_identity" "current" {
-
-}
-data "aws_region" "current" {
-
-}
 
 resource "aws_iam_role" "arc_for_server_ssm_role" {
   name               = var.ArcForServerEC2SSMRoleName
