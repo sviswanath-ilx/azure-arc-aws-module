@@ -56,3 +56,9 @@ variable "oidc_url" {
 variable "azure_connector_id" {
   description = "Azure Arc connector ID"
 }
+
+variable "tags" {
+  type        = map(any)
+  description = "Tags for the azure arc aws instance"
+}
+  

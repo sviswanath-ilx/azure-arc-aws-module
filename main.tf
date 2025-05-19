@@ -21,10 +21,11 @@ resource "aws_iam_role" "arc_for_server_ssm_role" {
 
   description = "Azure Arc for servers to access SSM services role"
 
-  tags = {
-    AzureMultiCloudConnectorId = local.azure_connector_id,
-    azure-to-aws = "true"
-  }
+  # tags = {
+  #   AzureMultiCloudConnectorId = local.azure_connector_id,
+  #   azure-to-aws = "true"
+  # }
+   tags  = var.tags
 }
 
 resource "aws_iam_role_policy_attachment" "ssm_core_attach" {
@@ -43,9 +44,10 @@ resource "aws_iam_openid_connect_provider" "microsoft_oidc" {
   thumbprint_list = ["626d44e704d1ceabe3bf0d53397464ac8080142c"]
   url = "https://sts.windows.net/975f013f-7f24-47e8-a7d3-abc4752bf346/"
 
-  tags = {
-    AzureMultiCloudConnectorId = local.azure_connector_id
-  }
+  # tags = {
+  #   AzureMultiCloudConnectorId = local.azure_connector_id
+  # }
+   tags  = var.tags
 }
 
 resource "aws_iam_role" "arc_for_server_role" {
@@ -73,9 +75,10 @@ resource "aws_iam_role" "arc_for_server_role" {
 
   description = "Azure Arc for servers role"
 
-  tags = {
-    AzureMultiCloudConnectorId = local.azure_connector_id
-  }
+  # tags = {
+  #   AzureMultiCloudConnectorId = local.azure_connector_id
+  # }
+    tags = var.tags
 }
 
 resource "aws_iam_role_policy" "arc_for_server_policy" {
@@ -140,9 +143,10 @@ resource "aws_iam_role" "lambda_exec_role" {
     ]
   })
 
-  tags = {
-    AzureMultiCloudConnectorId = local.azure_connector_id
-  }
+  # tags = {
+  #   AzureMultiCloudConnectorId = local.azure_connector_id
+  # }
+   tags  = var.tags
 }
 
 resource "aws_iam_role_policy" "lambda_exec_policy" {
@@ -192,9 +196,10 @@ resource "aws_lambda_function" "ec2_ssm_auto_assign" {
   filename          = "${path.module}/lambda.zip"
   source_code_hash  = filebase64sha256("${path.module}/lambda.zip")
 
-  tags = {
-    AzureMultiCloudConnectorId = local.azure_connector_id
-  }
+  # tags = {
+  #   AzureMultiCloudConnectorId = local.azure_connector_id
+  # }
+   tags  = var.tags
 }
 
 resource "aws_cloudwatch_event_rule" "lambda_schedule" {
