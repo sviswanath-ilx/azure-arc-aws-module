@@ -1,7 +1,7 @@
-provider "aws" {
-  profile = var.profile_name        # Replace with your actual AWS CLI profile_name
-  region  = var.aws_region        # Replace with your target AWS region
-}
+# provider "aws" {
+#   profile = var.profile_name        # Replace with your actual AWS CLI profile_name
+#   region  = var.aws_region        # Replace with your target AWS region
+# }
 
 
 resource "aws_iam_role" "arc_for_server_ssm_role" {
